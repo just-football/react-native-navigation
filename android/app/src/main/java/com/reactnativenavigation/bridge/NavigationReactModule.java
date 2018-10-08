@@ -26,6 +26,7 @@ import com.reactnativenavigation.params.parsers.SnackbarParamsParser;
 import com.reactnativenavigation.params.parsers.TitleBarButtonParamsParser;
 import com.reactnativenavigation.params.parsers.TitleBarLeftButtonParamsParser;
 import com.reactnativenavigation.views.SideMenu.Side;
+import com.reactnativenavigation.controllers.NavigationActivity;
 
 import java.util.List;
 
@@ -51,6 +52,12 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         return NAME;
+    }
+
+    @Override
+    public void onCatalystInstanceDestroy() {
+        super.onCatalystInstanceDestroy();
+        NavigationActivity.onCatalystInstanceDestroy();
     }
 
     @ReactMethod

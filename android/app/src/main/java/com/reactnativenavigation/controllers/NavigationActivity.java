@@ -502,4 +502,18 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
     public Layout getLayout() {
         return layout;
     }
+
+    public static void onCatalystInstanceDestroy() {
+        if (currentActivity == null) {
+            return;
+        }
+        currentActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (currentActivity != null) {
+                    currentActivity.destroyLayouts();
+                }
+            }
+        });
+    }
 }
